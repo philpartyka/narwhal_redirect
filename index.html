@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Opening in Narwhal...</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; text-align: center; padding: 40px 20px; background: #1a1a2e; color: #e0e0e0; }
+        a { color: #4fc3f7; }
+    </style>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var url = params.get('url');
+        if (url) {
+            window.location.href = 'narwhal://open-url/' + encodeURIComponent(url);
+            setTimeout(function() {
+                window.location.href = url;
+            }, 2000);
+        }
+    </script>
+</head>
+<body>
+    <p>Opening in Narwhal...</p>
+    <p><a id="fallback">Open in browser instead</a></p>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var url = params.get('url');
+        if (url) document.getElementById('fallback').href = url;
+    </script>
+</body>
+</html>
